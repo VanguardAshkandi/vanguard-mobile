@@ -7,7 +7,7 @@ export class HomeView extends React.Component {
   render() {
     return (
       <View style={defaultStyles.view}>
-        <Text style={defaultStyles.text}>Open up App.tsx to start working on your app!</Text>
+        <Text style={defaultStyles.text}>News feed or whatever goes here.</Text>
       </View>
     );
   }

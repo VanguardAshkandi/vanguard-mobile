@@ -1,21 +1,35 @@
 import React from 'react';
+import { View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 
-import { HomeView } from './app/home';
-import { GPPView } from './app/gpp';
-
-const AppNavigator = createStackNavigator({
-  home: HomeView,
-  gpp: GPPView
-},{
-  initialRouteName: 'home',
-})
+import { AppNavigator } from './app/nav';
+import { loadFonts, DEFAULT_BG_COLOR } from './app/styles';
 
 const AppContainer = createAppContainer(AppNavigator);
 
-export default class App extends React.Component {
+interface AppState {
+  fontsLoaded: boolean
+}
+
+export default class App extends React.Component<{}, AppState> {
+  state = {
+    fontsLoaded: false
+  }
+
+  async componentDidMount() {
+    await loadFonts();
+
+    this.setState({ fontsLoaded: true });
+  }
+
   render() {
-    return <AppContainer />;
+    if(this.state.fontsLoaded) {
+      return (
+        <AppContainer style={{ flex: 1 }} />
+      );
+    } else {
+      // Stub view
+      return <View style={{ flex: 1, backgroundColor: DEFAULT_BG_COLOR }} />
+    }
   }
 }
