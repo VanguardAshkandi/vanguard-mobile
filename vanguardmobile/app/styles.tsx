@@ -1,3 +1,4 @@
+import React from 'react';
 import { Image, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
 import * as Font from 'expo-font';
@@ -30,7 +31,7 @@ export function loadFonts() {
 const CLASS_ICON_HEIGHT = 64;
 const CLASS_ICON_WIDTH = 64;
 
-function ClassIconImage(source) {
+function ClassIconImage({source}) {
   return (<Image
     source={source}
     style={{
@@ -43,39 +44,48 @@ function ClassIconImage(source) {
 export const wowClasses = {
   druid: {
     icon: <ClassIconImage source={require('../assets/class_icons/druid.png')} />,
-    bgColor: '#FF7D0A'
+    bgColor: '#FF7D0A',
+    bgColorRGBA: alpha => `rgba(255,125,10,${alpha})`
   },
   hunter: {
     icon: <ClassIconImage source={require('../assets/class_icons/hunter.png')} />,
-    bgColor: '#A9D271'
+    bgColor: '#A9D271',
+    bgColorRGBA: alpha => `rgba(169,210,113,${alpha})`
   },
   mage: {
     icon: <ClassIconImage source={require('../assets/class_icons/mage.png')} />,
-    bgColor: '#40C7EB'
+    bgColor: '#40C7EB',
+    bgColorRGBA: alpha => `rgba(64,199,235,${alpha})`
   },
   paladin: {
     icon: <ClassIconImage source={require('../assets/class_icons/paladin.png')} />,
-    bgColor: '#F58CBA'
+    bgColor: '#F58CBA',
+    bgColorRGBA: alpha => `rgba(245,140,186,${alpha})`
   },
   priest: {
     icon: <ClassIconImage source={require('../assets/class_icons/priest.png')} />,
-    bgColor: '#FFFFFF'
+    bgColor: '#FFFFFF',
+    bgColorRGBA: alpha => `rgba(255,255,255,${alpha})`
   },
   rogue: {
     icon: <ClassIconImage source={require('../assets/class_icons/rogue.png')} />,
-    bgColor: '#FFF569'
+    bgColor: '#FFF569',
+    bgColorRGBA: alpha => `rgba(255,245,105,${alpha})`
   },
   shaman: {
     icon: <ClassIconImage source={require('../assets/class_icons/shaman.png')} />,
-    bgColor: '#0070DE'
+    bgColor: '#0070DE',
+    bgColorRGBA: alpha => `rgba(0,112,222,${alpha})`
   },
   warlock: {
     icon: <ClassIconImage source={require('../assets/class_icons/warlock.png')} />,
-    bgColor: '#8787ED'
+    bgColor: '#8787ED',
+    bgColorRGBA: alpha => `rgba(135,135,237,${alpha})`
   },
   warrior: {
     icon: <ClassIconImage source={require('../assets/class_icons/warrior.png')} />,
-    bgColor: '#C79C6E'
+    bgColor: '#C79C6E',
+    bgColorRGBA: alpha => `rgba(199,156,110,${alpha})`
   }
 };
 
@@ -84,8 +94,6 @@ export const defaultStyles = StyleSheet.create<IViewStyles>({
     flex: 1,
     backgroundColor: DEFAULT_BG_COLOR,
     color: DEFAULT_TEXT_COLOR,
-    alignItems: 'center',
-    justifyContent: 'center',
     fontFamily: DEFAULT_FONT_FAMILY
   },
   text: {

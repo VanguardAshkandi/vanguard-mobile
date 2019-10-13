@@ -41,7 +41,7 @@ export const AppNavigator = createBottomTabNavigator({
     }
   }
 },{
-  initialRouteName: 'home',
+  initialRouteName: 'gpp',
   tabBarOptions: {
     style: {
       backgroundColor: DEFAULT_BG_COLOR,
